@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:56069",
-      "sslPort": 44374
+      "applicationUrl": "http://localhost:55261",
+      "sslPort": 44399
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -12,15 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "User",
+      "launchUrl": "user",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TracingData": {
+    "UserDataAPI": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "User",
+      "launchUrl": "user",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/user",
       "publishAllPorts": true,
       "useSSL": true
     }

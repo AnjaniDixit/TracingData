@@ -11,9 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using TracingData.Models;
+using UserDataAPI.Models;
 
-namespace TracingData
+namespace UserDataAPI
 {
     public class Startup
     {
@@ -27,8 +27,9 @@ namespace TracingData
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionStrings = Configuration.GetConnectionString("UserData");
-            services.AddDbContext<UserDataContext>(options => options.UseSqlServer(connectionStrings));
+            var connection = Configuration.GetConnectionString("UserData");
+            services.AddDbContext<UserDataContext>(options => options.UseSqlServer(connection));
+
             services.AddControllers();
         }
 

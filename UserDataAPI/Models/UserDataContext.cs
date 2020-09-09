@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace TracingData.Models
+namespace UserDataAPI.Models
 {
     public partial class UserDataContext : DbContext
     {
@@ -21,7 +21,6 @@ namespace TracingData.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-
             }
         }
 

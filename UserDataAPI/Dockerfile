@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["TracingData/TracingData.csproj", "TracingData/"]
-RUN dotnet restore "TracingData/TracingData.csproj"
+COPY ["UserDataAPI/UserDataAPI.csproj", "UserDataAPI/"]
+RUN dotnet restore "UserDataAPI/UserDataAPI.csproj"
 COPY . .
-WORKDIR "/src/TracingData"
-RUN dotnet build "TracingData.csproj" -c Release -o /app/build
+WORKDIR "/src/UserDataAPI"
+RUN dotnet build "UserDataAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "TracingData.csproj" -c Release -o /app/publish
+RUN dotnet publish "UserDataAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "TracingData.dll"]
+ENTRYPOINT ["dotnet", "UserDataAPI.dll"]
