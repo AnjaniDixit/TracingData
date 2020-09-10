@@ -16,9 +16,9 @@ namespace UserDataAPI.Controllers
 
 
         private readonly ILogger<UserDataController> _logger;
-        private readonly UserDataContext _userDataContext;
+        private readonly UserDBContext _userDataContext;
 
-        public UserDataController(ILogger<UserDataController> logger, UserDataContext userDataContext)
+        public UserDataController(ILogger<UserDataController> logger, UserDBContext userDataContext)
         {
             _logger = logger;
             _userDataContext = userDataContext;
@@ -30,9 +30,9 @@ namespace UserDataAPI.Controllers
             var data = _userDataContext.Users.FirstOrDefault(user => user.UserId == 1);
             return new User()
             {
-                name = data.UserName,
-                age = data.Age,
-                email = data.UserEmail
+               name=data.Name,
+               age=data.Age,
+               email=data.Email
             };
         }
 

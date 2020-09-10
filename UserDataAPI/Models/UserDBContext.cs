@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace UserDataAPI.Models
 {
-    public partial class UserDataContext : DbContext
+    public partial class UserDBContext : DbContext
     {
-        public UserDataContext()
+        public UserDBContext()
         {
         }
 
-        public UserDataContext(DbContextOptions<UserDataContext> options)
+        public UserDBContext(DbContextOptions<UserDBContext> options)
             : base(options)
         {
         }
@@ -21,6 +21,7 @@ namespace UserDataAPI.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+                //optionsBuilder.UseSqlServer("Server=tcp:localhost,1433;Database=UserDB;Integrated Security=True");
             }
         }
 
@@ -29,13 +30,13 @@ namespace UserDataAPI.Models
             modelBuilder.Entity<Users>(entity =>
             {
                 entity.HasKey(e => e.UserId)
-                    .HasName("PK__Users__1788CC4C70244701");
+                    .HasName("PK__Users__1788CC4C636934FF");
 
-                entity.Property(e => e.UserEmail)
+                entity.Property(e => e.Email)
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.UserName)
+                entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);

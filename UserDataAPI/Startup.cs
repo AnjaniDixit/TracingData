@@ -27,8 +27,24 @@ namespace UserDataAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //----Reading from Environment variables-----
+            /*
+            var server = Configuration["DBServer"] ?? "172.26.16.1";
+            var port = Configuration["DBPort"] ?? "1401";
+            var user = Configuration["User"] ?? "sa";
+            var password = Configuration["Password"] ?? "Sample123";
+            var database = Configuration["Database"] ?? "User";
+
+            services.AddDbContext<UserDBContext>(options =>
+            {
+                options.UseSqlServer($"Server={server},{port};Initial Catalog={database}; User ID={user};Password={password}");
+            });
+            */
+
+            //----Reading from appsettings-------
+
             var connection = Configuration.GetConnectionString("UserData");
-            services.AddDbContext<UserDataContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<UserDBContext>(options => options.UseSqlServer(connection));
 
             services.AddControllers();
         }

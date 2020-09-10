@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  ms-sql-server:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Sample123"
+      MSSQL_PID: "Express"
+    ports:
+      - "1401:1433"
+  userdataapi:
+    image: ${DOCKER_REGISTRY-}userdataapi
+    build:
+      context: .
+      dockerfile: UserDataAPI/Dockerfile
+  
