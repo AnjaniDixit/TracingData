@@ -30,16 +30,19 @@ namespace AggregatorAPI.Controllers
 
         {
             OrderDetails orderDetails = new OrderDetails();
-            orderDetails.user = await GetUser();
             orderDetails.orders = await GetOrders();
+            orderDetails.user = await GetUser();
+
+
             return orderDetails;
         }
 
         private async Task<User> GetUser()
         {
             var client = _factory.CreateClient("UserAPI");
-
-            var requestMsg = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5000/User/1");
+            string urlcontainer = "http://userdataapi/user/1";
+            //string urllocal = "http://localhost:5000/User/1";
+            var requestMsg = new HttpRequestMessage(HttpMethod.Get, urlcontainer);
 
             var responseMsg = await client.SendAsync(requestMsg);
 
@@ -57,7 +60,10 @@ namespace AggregatorAPI.Controllers
         {
             var client = _factory.CreateClient("OrderAPI");
 
-            var requestMsg = new HttpRequestMessage(HttpMethod.Get, "http://localhost:5001/Orders/1");
+            string urlContainer = "http://orderapi/orders/1";
+            //string urllocal = "http://localhost:5001/Orders/1";
+
+            var requestMsg = new HttpRequestMessage(HttpMethod.Get, urlContainer);
 
             var responseMsg = await client.SendAsync(requestMsg);
 

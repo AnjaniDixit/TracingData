@@ -3,10 +3,10 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>b35e3e67-f0bd-4bc5-9c2f-4877a66c2599</ProjectGuid>
+    <ProjectGuid>bc6e6da4-ae64-4113-9ed8-802d25b5588a</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/user</DockerServiceUrl>
-    <DockerServiceName>userdataapi</DockerServiceName>
+    <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/orderdetails</DockerServiceUrl>
+    <DockerServiceName>aggregatorapi</DockerServiceName>
   </PropertyGroup>
   <ItemGroup>
     <None Include="docker-compose.override.yml">

@@ -1,7 +1,27 @@
 version: '3.4'
 
 services:
-  ms-sql-server:
+  aggregatorapi:
+    image: ${DOCKER_REGISTRY-}aggregatorapi
+    build:
+      context: .
+      dockerfile: AggregatorAPI/Dockerfile
+    depends_on:
+      - orderapi
+      - userdataapi
+  orderapi:
+    image: ${DOCKER_REGISTRY-}orderapi
+    build:
+      context: .
+      dockerfile: OrderAPI/Dockerfile
+  userdataapi:
+    image: ${DOCKER_REGISTRY-}userdataapi
+    build:
+      context: .
+      dockerfile: UserDataAPI/Dockerfile
+    depends_on:
+      - sqldata
+  sqldata:
     image: mcr.microsoft.com/mssql/server:2017-latest
     environment:
       ACCEPT_EULA: "Y"
@@ -9,9 +29,3 @@ services:
       MSSQL_PID: "Express"
     ports:
       - "1401:1433"
-  userdataapi:
-    image: ${DOCKER_REGISTRY-}userdataapi
-    build:
-      context: .
-      dockerfile: UserDataAPI/Dockerfile
-  
